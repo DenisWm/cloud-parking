@@ -18,12 +18,16 @@ public class ParkingDTO {
     private LocalDateTime exitDate;
     private Double bill;
 
+    public ParkingDTO() {
+    }
+
     public ParkingDTO(Parking parking) {
         this.id = parking.getId();
         this.license = parking.getLicense();
         this.state = parking.getState();
         this.model = parking.getModel();
-        this.color = parking.getModel();
+        this.color = parking.getColor();
+        this.entryDate = parking.getEntryDate();
     }
 
     public String getId() {
