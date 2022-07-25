@@ -2,10 +2,17 @@ package one.digitalinnovation.parking.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import java.lang.annotation.Documented;
 import java.time.LocalDateTime;
 
+@Entity
 public class Parking {
 
+    @Id
     private String id;
     private String license;
     private String state;

@@ -25,6 +25,8 @@ class ParkingControllerTest {
     @Test
     void whenFindAllThenCheckResult() {
         RestAssured.given()
+                .auth()
+                .basic("user", "Dio@123456")
                 .when()
                 .get("/parking")
                 .then()
@@ -39,6 +41,8 @@ class ParkingControllerTest {
         parkingDto.setState("MG");
 
         RestAssured.given()
+                .auth()
+                .basic("user", "Dio@123456")
                 .when()
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
                 .body(parkingDto)
