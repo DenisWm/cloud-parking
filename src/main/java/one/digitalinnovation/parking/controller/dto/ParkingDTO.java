@@ -28,6 +28,8 @@ public class ParkingDTO {
         this.model = parking.getModel();
         this.color = parking.getColor();
         this.entryDate = parking.getEntryDate();
+        this.exitDate = parking.getExitDate();
+        this.bill = parking.getBill();
     }
 
     public String getId() {

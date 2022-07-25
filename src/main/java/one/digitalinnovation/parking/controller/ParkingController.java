@@ -23,7 +23,7 @@ public class ParkingController {
     private ParkingService parkingService;
 
     @GetMapping
-    @ApiOperation("Find aall parkings")
+    @ApiOperation("Find all parkings")
     public ResponseEntity<List<ParkingDTO>> findAll(){
 
         List<ParkingDTO> list = parkingService.findAll().stream().map(parking -> new ParkingDTO(parking)).collect(Collectors.toList());
@@ -33,14 +33,32 @@ public class ParkingController {
     @GetMapping("/{id}")
     public ResponseEntity<ParkingDTO> findById(@PathVariable String id){
         ParkingDTO parking = new ParkingDTO(parkingService.findById(id));
+
         return ResponseEntity.ok(parking);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable String id){
+        parkingService.delete(id);
+
+        return ResponseEntity.noContent().build();
     }
 
     @PostMapping
     public ResponseEntity<ParkingDTO> create(@RequestBody ParkingDTO parkingDto){
         Parking parking =  parkingService.create(parkingDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ParkingDTO(parking));
+    }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ParkingDTO> update(@PathVariable String id, @RequestBody ParkingDTO parkingDto){
+        Parking parking =  parkingService.update(id, parkingDto);
+        return ResponseEntity.status(HttpStatus.OK).body(new ParkingDTO(parking));
+    }
 
+    @PostMapping("/exit/{id}")
+    public ResponseEntity<ParkingDTO> exit(@PathVariable String id){
+        Parking parking =  parkingService.exit(id);
+        return ResponseEntity.status(HttpStatus.OK).body(new ParkingDTO(parking));
     }
 }
