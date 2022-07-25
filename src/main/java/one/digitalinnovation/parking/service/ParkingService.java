@@ -18,9 +18,7 @@ public class ParkingService {
     var id =  getUUID();
     var id1 =  getUUID();
         Parking parking = new Parking(id, "DMS-1111", "SC", "CELTA", "PRETO");
-        Parking parking1 = new Parking(id1, "WAS-1234", "SP", "VW GOL", "VERMELHO");
         parkingMap.put(id, parking);
-        parkingMap.put(id1, parking1);
 
     }
 
